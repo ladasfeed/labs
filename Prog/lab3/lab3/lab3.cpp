@@ -127,7 +127,7 @@ int main()
 	cin >> N;
 	cin >> M;
 
-
+	cout << "kk";
 	
 
 	for (int i = 1; i < N; i++) {
