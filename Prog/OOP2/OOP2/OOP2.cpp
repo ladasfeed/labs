@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <sstream>
 #include <cmath>
 using namespace std;
 
@@ -18,6 +19,16 @@ public:
 
 	double getIm() {
 		return Im;
+	}
+
+
+	virtual string Info() {
+		string temp = "";
+		std::ostringstream ostr;
+		ostr << Real;
+		ostr << "+i*";
+		ostr << Im;
+		return ostr.str();
 	}
 
 };
@@ -42,15 +53,33 @@ public:
 		return atan((1 / getRe()) * (1 / getRe()) + (1 / getIm()) * (1 / getIm()));
 	}
 
+	string Info() {
+		string temp = "";
+		std::ostringstream ostr;
+		ostr << getRe();
+		ostr << "+i*";
+		ostr << getIm();
+		ostr << "  ";
+		ostr << Angle;
+		ostr << " ";
+		ostr << absCoduct();
+		ostr << " ";
+		ostr << argConduct();
+		return ostr.str();
+	}
+
+
+
 };
 int main()
 {
 	double Re, Im, Angle;
 	cin >> Re >> Im >> Angle;
+	Complex num(Re, Im);
 	ComplexResist res(Re, Im, Angle);
-	cout << res.absCoduct();
-	cout << endl << res.argConduct();
-
+	
+	cout << num.Info() << endl;
+	cout << res.Info() << endl;
 
 
 	return 0;
